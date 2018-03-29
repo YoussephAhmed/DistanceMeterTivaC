@@ -183,7 +183,8 @@ int main()
 			// V (speed of sound) = 340 m/s  = .34 cm/10us
 			// distance = (.34 * time ) / 2 = .17*time
 			distance = .17 * time ;
-			distance = distance * .02 +1; // error correction due some measurements :'D
+			distance++;
+			distance += distance * .02; // error correction due some measurements :'D
 			time=0;
 			echo = 0;
 
