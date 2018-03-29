@@ -62,8 +62,8 @@ void PORTS_Init(void)
   SYSCTL_RCGCGPIO_R |= 0x3F; // Clock to all ports enabled
   delay = 1; // dummy var for delay
 
-	//PORTF____________________
-	GPIO_PORTF_LOCK_R = GPIO_LOCK_KEY;   // unlock GPIO Port F
+  //PORTF____________________
+  GPIO_PORTF_LOCK_R = GPIO_LOCK_KEY;   // unlock GPIO Port F
   GPIO_PORTF_CR_R = 0x1F;           // allow changes to PF4-0
   GPIO_PORTF_AFSEL_R = 0; // Alternative Function
   GPIO_PORTF_PCTL_R = 0; // Port Control
@@ -73,15 +73,15 @@ void PORTS_Init(void)
   GPIO_PORTF_PUR_R = 0x10; // pull up the input F4
 
 
- //PORTA_____________________
+  //PORTA_____________________
   GPIO_PORTA_AMSEL_R  = 0;   //  disable analog function
   GPIO_PORTA_PCTL_R   = 0;   // GPIO clear bit PCTL
-	GPIO_PORTA_AFSEL_R  = 0;   // Alternative Function
+  GPIO_PORTA_AFSEL_R  = 0;   // Alternative Function
   GPIO_PORTA_DIR_R    = 0x3F; //  PA2, PA2, PA4, PA5->output(1) ,PA6,PA7 ->input(0)
   GPIO_PORTA_DEN_R    = 0xFF; // enable digital pins PA2, PA3, PA4, PA5 ,PA6,PA7
 
 
-//PORTE__________________________
+  //PORTE__________________________
   GPIO_PORTE_AMSEL_R = 0;    //  disable analog function
   GPIO_PORTE_PCTL_R  = 0;    //  GPIO clear bit PCTL
   GPIO_PORTE_DIR_R   = 0xFF; //  E0-E7 output
@@ -95,13 +95,14 @@ void PORTS_Init(void)
 
 
 //ISR
- void SysTick_Handler(void){
+ void SysTick_Handler(void)
+ {
     microsec_10++;
 
 	 if(echo)
 		 time++;
 
-	}
+ }
 
 
 
@@ -119,7 +120,7 @@ void delay(int number) // 10 us
 
 
  void display(int number)
-	 {
+  {
   int hundreds=0, tens=0,ones=0;
 
   if(number>99){
@@ -142,7 +143,7 @@ void delay(int number) // 10 us
 		GPIO_PORTA_DATA_R = tens; //    --------> middle
 		GPIO_PORTF_DATA_R = ones; //      --------> least significant
 
-}
+  }
 
 
 int main()
