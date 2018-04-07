@@ -188,9 +188,6 @@ int main()
 			time=0;
 			echo = 0;
 
-			if(time > 1764) // 3 metre
-			distance = 999;
-
 		if(distance > 999)
 			distance = 999;
 
